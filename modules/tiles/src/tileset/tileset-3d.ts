@@ -381,7 +381,10 @@ export class Tileset3D {
    * @param viewports viewports
    * @returns Promise of new frameNumber
    */
-  async selectTiles(viewports: Viewport[] | Viewport | null = null): Promise<number> {
+  async selectTiles(
+    viewports: Viewport[] | Viewport | null = null,
+    _getFrameState: null | ((viewport: Viewport, frameNumber: number) => FrameState) = null
+  ): Promise<number> {
     await this.tilesetInitializationPromise;
     if (viewports) {
       this.lastUpdatedVieports = viewports;
@@ -390,7 +393,7 @@ export class Tileset3D {
       this.updatePromise = new Promise<number>((resolve) => {
         setTimeout(() => {
           if (this.lastUpdatedVieports) {
-            this.doUpdate(this.lastUpdatedVieports);
+            this.doUpdate(this.lastUpdatedVieports, _getFrameState);
           }
           resolve(this._frameNumber);
           this.updatePromise = null;
@@ -405,7 +408,10 @@ export class Tileset3D {
    * @param viewports viewports
    */
   // eslint-disable-next-line max-statements, complexity
-  private doUpdate(viewports: Viewport[] | Viewport): void {
+  private doUpdate(
+    viewports: Viewport[] | Viewport,
+    _getFrameState: null | ((viewport: Viewport, frameNumber: number) => FrameState) = null
+  ): void {
     if ('loadTiles' in this.options && !this.options.loadTiles) {
       return;
     }
@@ -438,7 +444,9 @@ export class Tileset3D {
       if (!viewportsToTraverse.includes(id)) {
         continue; // eslint-disable-line no-continue
       }
-      const frameState = getFrameState(viewport as GeospatialViewport, this._frameNumber);
+      const frameState = _getFrameState
+        ? _getFrameState(viewport, this._frameNumber)
+        : getFrameState(viewport as GeospatialViewport, this._frameNumber);
       this._traverser.traverse(this.roots[id], frameState, this.options);
     }
   }

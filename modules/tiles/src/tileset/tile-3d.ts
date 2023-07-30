@@ -387,10 +387,10 @@ export class Tile3D {
         }
       };
 
-      this.content = await load(contentUrl, loader, options);
-
       if (this.tileset.options.contentLoader) {
-        await this.tileset.options.contentLoader(this);
+        this.content = await this.tileset.options.contentLoader(this);
+      } else {
+        this.content = await load(contentUrl, loader, options);
       }
 
       if (this._isTileset()) {
