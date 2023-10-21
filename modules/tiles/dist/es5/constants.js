@@ -1,0 +1,48 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TILE_TYPE = exports.TILE_REFINEMENT = exports.TILE_CONTENT_STATE = exports.TILESET_TYPE = exports.TILE3D_OPTIMIZATION_HINT = exports.LOD_METRIC_TYPE = void 0;
+var TILE_CONTENT_STATE = {
+  UNLOADED: 0,
+  LOADING: 1,
+  PROCESSING: 2,
+  READY: 3,
+  EXPIRED: 4,
+  FAILED: 5
+};
+exports.TILE_CONTENT_STATE = TILE_CONTENT_STATE;
+var TILE_REFINEMENT = function (TILE_REFINEMENT) {
+  TILE_REFINEMENT[TILE_REFINEMENT["ADD"] = 1] = "ADD";
+  TILE_REFINEMENT[TILE_REFINEMENT["REPLACE"] = 2] = "REPLACE";
+  return TILE_REFINEMENT;
+}({});
+exports.TILE_REFINEMENT = TILE_REFINEMENT;
+var TILE_TYPE = function (TILE_TYPE) {
+  TILE_TYPE["EMPTY"] = "empty";
+  TILE_TYPE["SCENEGRAPH"] = "scenegraph";
+  TILE_TYPE["POINTCLOUD"] = "pointcloud";
+  TILE_TYPE["MESH"] = "mesh";
+  return TILE_TYPE;
+}({});
+exports.TILE_TYPE = TILE_TYPE;
+var TILESET_TYPE = function (TILESET_TYPE) {
+  TILESET_TYPE["I3S"] = "I3S";
+  TILESET_TYPE["TILES3D"] = "TILES3D";
+  return TILESET_TYPE;
+}({});
+exports.TILESET_TYPE = TILESET_TYPE;
+var LOD_METRIC_TYPE = function (LOD_METRIC_TYPE) {
+  LOD_METRIC_TYPE["GEOMETRIC_ERROR"] = "geometricError";
+  LOD_METRIC_TYPE["MAX_SCREEN_THRESHOLD"] = "maxScreenThreshold";
+  return LOD_METRIC_TYPE;
+}({});
+exports.LOD_METRIC_TYPE = LOD_METRIC_TYPE;
+var TILE3D_OPTIMIZATION_HINT = {
+  NOT_COMPUTED: -1,
+  USE_OPTIMIZATION: 1,
+  SKIP_OPTIMIZATION: 0
+};
+exports.TILE3D_OPTIMIZATION_HINT = TILE3D_OPTIMIZATION_HINT;
+//# sourceMappingURL=constants.js.map
