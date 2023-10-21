@@ -1,0 +1,1 @@
+{"version":3,"file":"parse-3d-tile-gltf.d.ts","sourceRoot":"","sources":["../../../src/lib/parsers/parse-3d-tile-gltf.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAC,aAAa,EAAC,MAAM,0BAA0B,CAAC;AAC5D,OAAO,KAAK,EAAC,oBAAoB,EAAC,MAAM,uBAAuB,CAAC;AAGhE,wBAAsB,eAAe,CACnC,IAAI,KAAA,EACJ,WAAW,EAAE,WAAW,EACxB,OAAO,EAAE,oBAAoB,EAC7B,OAAO,EAAE,aAAa,GACrB,OAAO,CAAC,IAAI,CAAC,CAef"}
