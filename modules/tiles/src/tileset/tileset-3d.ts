@@ -8,7 +8,6 @@ import {Ellipsoid} from '@math.gl/geospatial';
 import {Stats} from '@probe.gl/stats';
 import {RequestScheduler, path, LoaderWithParser, LoaderOptions} from '@loaders.gl/loader-utils';
 import {TilesetCache} from './tileset-cache';
-import {calculateTransformProps} from './helpers/transform-utils';
 import {FrameState, getFrameState, limitSelectedTiles} from './helpers/frame-state';
 import {getZoomFromBoundingVolume, getZoomFromExtent, getZoomFromFullExtent} from './helpers/zoom';
 
@@ -780,9 +779,9 @@ export class Tileset3D {
     }
 
     // add coordinateOrigin and modelMatrix to tile
-    if (tile && tile.content) {
-      calculateTransformProps(tile, tile.content);
-    }
+    // if (tile && tile.content) {
+    //   calculateTransformProps(tile, tile.content);
+    // }
 
     this.updateContentTypes(tile);
     this._addTileToCache(tile);

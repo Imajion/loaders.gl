@@ -9,7 +9,6 @@ const geospatial_1 = require("@math.gl/geospatial");
 const stats_1 = require("@probe.gl/stats");
 const loader_utils_1 = require("@loaders.gl/loader-utils");
 const tileset_cache_1 = require("./tileset-cache");
-const transform_utils_1 = require("./helpers/transform-utils");
 const frame_state_1 = require("./helpers/frame-state");
 const zoom_1 = require("./helpers/zoom");
 const tile_3d_1 = require("./tile-3d");
@@ -287,7 +286,9 @@ class Tileset3D {
             if (!viewportsToTraverse.includes(id)) {
                 continue; // eslint-disable-line no-continue
             }
-            const frameState = _getFrameState ? _getFrameState(viewport, this._frameNumber) : (0, frame_state_1.getFrameState)(viewport, this._frameNumber);
+            const frameState = _getFrameState
+                ? _getFrameState(viewport, this._frameNumber)
+                : (0, frame_state_1.getFrameState)(viewport, this._frameNumber);
             this._traverser.traverse(this.roots[id], frameState, this.options);
         }
     }
@@ -572,9 +573,9 @@ class Tileset3D {
             this.stats.get(TILES_TOTAL).addCount(nodesInNodePages);
         }
         // add coordinateOrigin and modelMatrix to tile
-        if (tile && tile.content) {
-            (0, transform_utils_1.calculateTransformProps)(tile, tile.content);
-        }
+        // if (tile && tile.content) {
+        //   calculateTransformProps(tile, tile.content);
+        // }
         this.updateContentTypes(tile);
         this._addTileToCache(tile);
         this.options.onTileLoad(tile);

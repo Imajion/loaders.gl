@@ -4,7 +4,6 @@ import { Ellipsoid } from '@math.gl/geospatial';
 import { Stats } from '@probe.gl/stats';
 import { RequestScheduler, path } from '@loaders.gl/loader-utils';
 import { TilesetCache } from './tileset-cache';
-import { calculateTransformProps } from './helpers/transform-utils';
 import { getFrameState, limitSelectedTiles } from './helpers/frame-state';
 import { getZoomFromBoundingVolume, getZoomFromExtent, getZoomFromFullExtent } from './helpers/zoom';
 import { Tile3D } from './tile-3d';
@@ -474,9 +473,6 @@ export class Tileset3D {
       const nodesInNodePages = ((_this$tileset = this.tileset) === null || _this$tileset === void 0 ? void 0 : (_this$tileset$nodePag = _this$tileset.nodePagesTile) === null || _this$tileset$nodePag === void 0 ? void 0 : _this$tileset$nodePag.nodesInNodePages) || 0;
       this.stats.get(TILES_TOTAL).reset();
       this.stats.get(TILES_TOTAL).addCount(nodesInNodePages);
-    }
-    if (tile && tile.content) {
-      calculateTransformProps(tile, tile.content);
     }
     this.updateContentTypes(tile);
     this._addTileToCache(tile);

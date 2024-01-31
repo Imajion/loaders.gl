@@ -16,7 +16,6 @@ var _geospatial = require("@math.gl/geospatial");
 var _stats = require("@probe.gl/stats");
 var _loaderUtils = require("@loaders.gl/loader-utils");
 var _tilesetCache = require("./tileset-cache");
-var _transformUtils = require("./helpers/transform-utils");
 var _frameState = require("./helpers/frame-state");
 var _zoom = require("./helpers/zoom");
 var _tile3d = require("./tile-3d");
@@ -682,9 +681,6 @@ var Tileset3D = function () {
         var nodesInNodePages = ((_this$tileset = this.tileset) === null || _this$tileset === void 0 ? void 0 : (_this$tileset$nodePag = _this$tileset.nodePagesTile) === null || _this$tileset$nodePag === void 0 ? void 0 : _this$tileset$nodePag.nodesInNodePages) || 0;
         this.stats.get(TILES_TOTAL).reset();
         this.stats.get(TILES_TOTAL).addCount(nodesInNodePages);
-      }
-      if (tile && tile.content) {
-        (0, _transformUtils.calculateTransformProps)(tile, tile.content);
       }
       this.updateContentTypes(tile);
       this._addTileToCache(tile);
